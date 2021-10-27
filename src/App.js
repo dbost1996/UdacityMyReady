@@ -1,9 +1,9 @@
 import React from 'react'
-import './App.css'
 import * as BooksAPI from "./BooksAPI";
 import {Link, Route} from 'react-router-dom'
 import BookSearch from "./BookSearch";
 import Book from "./Book";
+import './App.css'
 
 class BooksApp extends React.Component {
 
@@ -49,6 +49,17 @@ class BooksApp extends React.Component {
           BooksAPI.search(query)
               .then((data) => {
                   if(!data.error){
+                      data.forEach( element => {
+                          if( this.state.currentlyReading.some(el => el.id === element.id) ){
+                              element.shelf = 'currentlyReading'
+                          } else if( this.state.wantToRead.some(el => el.id === element.id) ){
+                              element.shelf = 'wantToRead'
+                          } else if( this.state.read.some(el => el.id === element.id) ) {
+                              element.shelf = 'read'
+                          } else {
+                          element.shelf = 'none'
+                          }
+                      })
                       this.setState(() => ({
                           searchResults: data
                       }))
