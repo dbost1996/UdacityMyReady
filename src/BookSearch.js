@@ -47,12 +47,9 @@ class BookSearch extends Component{
                         <Link to='/' onClick={this.resetSearch}>Go back to shelves</Link>
                     </div>
                 </div>
-
-
                 <div className="search-books-results">
                     {this.state.query === '' &&
                     <div> Search for new Books! </div>}
-
                     {this.props.books !== [] &&
                     <Book books={this.props.books}
                           changeBookshelf={this.props.changeBookshelf}></Book>

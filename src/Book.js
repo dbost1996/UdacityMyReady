@@ -14,9 +14,7 @@ function Book(props){
     return(
         <ol className="books-grid">
             {props.books.map((book) => (
-
                 <li key={book.id}>
-
                         <div className="book">
                             <div className="book-top">
                                 <img style={{ width: 128, height: 193 }} src={addDefaultImg(book)} alt='book cover' onError={addDefaultImg} />
@@ -26,7 +24,6 @@ function Book(props){
                             <div className="book-title">{book.title}</div>
                             <div className="book-authors">{book.authors}</div>
                         </div>
-
                 </li>
             ))}
         </ol>
